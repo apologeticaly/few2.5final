@@ -8,7 +8,7 @@ document.getElementById("info-name").innerHTML = "Name: World Happiness Report";
 document.getElementById("info-year").innerHTML = "Year: 2019";
 document.getElementById("info-countries").innerHTML = `Number of Countries: ${data.length}`;
 
-// TODO Challenge 3
+// TODO Challenge 3 
 
 data.sort((a,b) => {
     if(a.gdp > b.gdp) {
@@ -26,14 +26,23 @@ const bygdp = document.querySelector('#bygdp')
 const bygdpcountries = data.slice(0, 10).map(country => {
     var main = document.createElement('div')
     main.setAttribute("id", "country-data")
-    var country = document.createElement('div')
-    country.setAttribute("id", "country")
-    var score = document.createElement('div')
-    var category = document.createElement('div')
 
-    category.innerText = country.corruption
-    console.log(country[gdp])
-    main.appendChild(country)
+    var name = document.createElement('div')
+    name.setAttribute("id", "name")
+
+    var score = document.createElement('div')
+    score.setAttribute("id", "score")
+
+    var category = document.createElement('div')
+    category.setAttribute("id", "category")
+
+
+    category.innerHTML = country.gdp
+    // category.innerText = country.gdp
+
+
+    // console.log(country[gdp])
+    main.appendChild(name)
     main.appendChild(score)
     main.appendChild(category)
 	bygdp.appendChild(main)
