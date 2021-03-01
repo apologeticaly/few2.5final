@@ -1,0 +1,27 @@
+#country-data {
+    display: flex;
+    flex-direction: row;
+}
+
+#country-data > div:first-child {
+    border-left-width: 2px;
+    width: 10rem
+}
+
+#country-data > div {
+    border: 2px solid black;
+    border-left-width: 0;
+    border-bottom-width: 0;
+    padding: 0.5rem;
+    width: 4rem
+}
+
+
+
+#bycategory {
+    width: fit-content;
+}
+
+#bycategory > div:last-child{
+    border-bottom: 2px solid black!important
+}

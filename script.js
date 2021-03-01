@@ -10,20 +10,60 @@ document.getElementById("info-countries").innerHTML = `Number of Countries: ${da
 
 // TODO Challenge 3 
 
-data.sort((a,b) => {
-    if(a.gdp > b.gdp) {
-        return -1
-    } else if (a.gdp < b.gdp) {
-        return 1
-    }
-    return 0
-})
+document.getElementById("gdpbtn").addEventListener("click", function(){sortData('gdp');});
+document.getElementById("supportbtn").addEventListener("click", function(){sortData('support');});
+document.getElementById("healthbtn").addEventListener("click", function(){sortData('health');});
+document.getElementById("genbtn").addEventListener("click", function(){sortData('generosity');});
 
-console.log(data)
+function sortData(category) {
+    data.sort((a,b) => {
+        if(a.category > b.category) {
+            return -1
+        } else if (a.category < b.category) {
+            return 1
+        }
+        return 0
+    })
 
-const bygdp = document.querySelector('#bygdp')
+    displayTable(data, category)
+}
 
-const bygdpcountries = data.slice(0, 10).map(country => {
+
+
+function displayTable(data, mcategory) {
+    document.getElementById('bycategory').innerHTML = "";
+
+    const bycategory = document.querySelector('#bycategory')
+
+    data.slice(0, 10).map(country => {
+        var main = document.createElement('div')
+        main.setAttribute("id", "country-data")
+
+        var name = document.createElement('div')
+        name.setAttribute("id", "name")
+
+        var score = document.createElement('div')
+        score.setAttribute("id", "score")
+
+        var category = document.createElement('div')
+        category.setAttribute("id", "category")
+
+        name.innerHTML = country.country
+        score.innerHTML = country.score
+        category.innerHTML = country[mcategory]
+        // category.innerText = country.gdp
+
+
+        // console.log(country[gdp])
+        main.appendChild(name)
+        main.appendChild(score)
+        main.appendChild(category)
+        bycategory.appendChild(main)
+    })
+
+    var element = document.getElementById("bycategory");
+    var para = document.createElement('span')
+
     var main = document.createElement('div')
     main.setAttribute("id", "country-data")
 
@@ -36,8 +76,9 @@ const bygdpcountries = data.slice(0, 10).map(country => {
     var category = document.createElement('div')
     category.setAttribute("id", "category")
 
-
-    category.innerHTML = country.gdp
+    name.innerHTML = "Name"
+    score.innerHTML = "Score"
+    category.innerHTML = `${mcategory}`
     // category.innerText = country.gdp
 
 
@@ -45,8 +86,11 @@ const bygdpcountries = data.slice(0, 10).map(country => {
     main.appendChild(name)
     main.appendChild(score)
     main.appendChild(category)
-	bygdp.appendChild(main)
-})
+
+    element.insertBefore(main, element.firstChild);
+
+}
+
 
 
   
