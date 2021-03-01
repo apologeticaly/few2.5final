@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://d3js.org/d3.v4.js"></script>
     <title>World Happiness Study</title>
 </head>
 <body>
@@ -25,14 +26,16 @@
     <button id="healthbtn">Health</button>
     <button id="genbtn">Generosity</button>
 
-    <!-- Top 10 Countries by GDP -->
-    <div id="bycategory"></div>
 
-    <!-- Top 10 Countries by Social Support -->
+    <div style="display: flex;">
+        <!-- Top 10 Countries by Category -->
+        <div id="bycategory"></div>
+        <div id="bycategorygraph"></div>
+    </div>
 
-    <!-- Top 10 Countries by Healthy Life Expectancy -->
 
-    <!-- Top 10 Countries by Generosity -->
+
     <script type="module" src="script.js"></script>
+   
 </body>
 </html>
