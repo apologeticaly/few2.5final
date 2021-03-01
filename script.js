@@ -10,25 +10,25 @@ document.getElementById("info-countries").innerHTML = `Number of Countries: ${da
 
 // TODO Challenge 3 
 
+document.getElementById("happiestbtn").addEventListener("click", function(){sortData('score');});
 document.getElementById("gdpbtn").addEventListener("click", function(){sortData('gdp');});
 document.getElementById("supportbtn").addEventListener("click", function(){sortData('support');});
 document.getElementById("healthbtn").addEventListener("click", function(){sortData('health');});
 document.getElementById("genbtn").addEventListener("click", function(){sortData('generosity');});
 
 function sortData(category) {
-    data.sort((a,b) => {
-        if(a.category > b.category) {
-            return -1
-        } else if (a.category < b.category) {
-            return 1
-        }
-        return 0
+    var newdata = data.sort((a,b) => {
+        // if(a.category > b.category) {
+        //     return -1
+        // } else if (a.category < b.category) {
+        //     return 1
+        // }
+        // return 0
+        return b[category] - a[category]
     })
 
-    displayTable(data, category)
+    displayTable(newdata, category)
 }
-
-
 
 function displayTable(data, mcategory) {
     document.getElementById('bycategory').innerHTML = "";
